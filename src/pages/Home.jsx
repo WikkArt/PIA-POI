@@ -1,6 +1,7 @@
 import React from "react";
 import Sidebar from "../components/Sidebar";
 import Chat from "../components/Chat";
+import Newgroupbar from "../components/Newgroupbar";
 
 const Home = () => {
     return (
@@ -8,6 +9,7 @@ const Home = () => {
             <div className="container">
                 <Sidebar/>
                 <Chat/>
+                <Newgroupbar/>
             </div>
         </div>
     )
