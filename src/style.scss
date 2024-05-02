@@ -438,6 +438,17 @@
                         border-radius: 100%;
                         object-fit: cover;
                     }
+
+                    input[type=checkbox]{
+                        width: 1em;
+                        height: 1em;
+                        border: 0.1em solid #000;
+                        border-radius: 0.2em;
+                        display: inline-block;
+                        padding-left: 0.3em;
+                        padding-bottom: 0.3em;
+                        margin-left: 1em;
+                    }
                 }
 
                 button{
@@ -464,63 +475,68 @@
 }
 
 .chatGroup{
-    background-color: #383737;
+    background: -webkit-linear-gradient(to right,  #1c2d2e,  #22393a,  #1d3132);
+	background: linear-gradient(to right, #2f4f50,  #1f3535,  #2c4546);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+
     .container{
-        border: 1px solid white;
-        border-radius: 10px;
         width: 65%;
         height: 80%;
         display: flex;
+        gap: 1.5em;
         overflow: hidden;
 
         .sidebar{
-            flex: 1;
-            background-color: #383838;
+            width: 300px;
+            background-color: rgba(0, 0, 0, 0.4) !important;
             position: relative;
 
             .navbar{
-                display: flex;
-                align-items: center;
-                background-color: #201e1e;
+                background-color: rgba(0, 0, 0, 0.5) !important;
                 height: 50px;
                 padding: 10px;
-                justify-content: space-between;
                 color: white;
-
-                .logo{
-                    font-weight: bold;
-                }
 
                 .user{
                     display: flex;
+                    align-items: center;
                     gap: 10px;
+                    font-size: 20px;
+                    font-weight: 600;
 
                     img{
                         background-color: #ddddf7;
-                        height: 24px;
-                        width: 24px;
-                        border-radius: 50%;
+                        height: 50px;
+                        width: 50px;
+                        border-radius: 100%;
                         object-fit: cover;
                     }
 
                     button{
-                        background-color: #c3c3d3;
+                        margin-left: 85px;
+                        background-color: #519876;
                         color: #000000;
-                        font-size: 10px;
+                        font-size: 13px;
+                        padding: 8px 15px;
+                        border-radius: 10px;
                         border: none;
                         cursor: pointer;
                         @include tablet{
                             position: absolute;
                             bottom: 10px;
                         }
+                        transition: 200ms;
+                    }
+
+                    button:hover{
+                        background: radial-gradient(circle, #519876 0%, rgba(47,79,80,1) 130%);
+                        color: white;
                     }
                 }
-
-                
             }
 
             p {
@@ -533,15 +549,18 @@
         }
 
         .chat{  
+            height: 100%;
             flex: 2;
 
             .chatInfo{
-                height: 50px;
-                background-color: rgb(61, 61, 61);
+                height: 46px;
+                background-color: rgba(0, 0, 0, 0.7) !important;
+                font-weight: bold;
+                font-size: 18px;
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-                padding: 10px;
+                padding: 12px;
                 color: white;
             }
 
@@ -556,10 +575,11 @@
             }
 
             .messages{
-                background-color: #969696;
+                background-color: rgba(0, 0, 0, 0.4) !important;
                 padding: 10px;
                 height: calc(100% - 140px);
                 overflow: scroll;
+                overflow-x: hidden;
 
                 .message{
                     display: flex;
@@ -577,17 +597,25 @@
                             height: 40px;
                             border-radius: 50%;
                             object-fit: cover;
+                            margin-bottom: 5px;
+                        }
+
+                        p{
+                            color: #adadad;
+                            font-size: 12px;
                         }
                     }
 
                     .messageContent{
                         max-width: 80%;
+                        margin-right: 120px;
                         display: flex;
                         flex-direction: column;
                         gap: 10px;
 
                         p{
-                            background-color: #ddddf7;
+                            background-color: #39413ff4;
+                            color: white;
                             padding: 10px 20px;
                             border-radius: 0px 10px 10px 10px;
                             max-width: max-content;
@@ -599,12 +627,14 @@
 
                     &.owner{
                         flex-direction: row-reverse;
+                        margin-left: 120px;
 
                         .messageContent{
+                            margin-right: 0%;
                             align-items: flex-end;
                             p{
-                                background-color: #383737;
-                                color: white;
+                                background-color: #82ccdd;
+                                color:#000000;
                                 border-radius: 10px 0px 10px 10px;
                             }
                         }
@@ -613,22 +643,26 @@
             }
 
             .input{ //this is the classname in Input.jsx
-                height: 50px;
-                background-color: #444444;
+                height: auto;
+                background-color: rgba(0, 0, 0, 0.4) !important;
+                padding: 5px 8px;
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
 
                 input{
                     width: 100%;
+                    margin-right: 8px;
                     border: none;
+                    border-radius: 10px;
+                    padding: 10px;
                     outline: none;
-                    color: #000000;
-                    font-size: 18px;
-                    background-color: #444444;
+                    color: lightgray;
+                    font-size: 16px;
+                    background-color: rgba(0, 0, 0, 0.3);
 
                     &::placeholder{
-                        color: #000000;
+                        color:rgba(211, 211, 211, 0.5);
                     }
                 }
 
@@ -638,17 +672,25 @@
                     gap: 10px;
 
                     img{
+                        justify-content: space-evenly;
                         height: 24px;
                         cursor: pointer;
                     }
+                }
 
-                    button{
-                        border: none;
-                        padding: 8px 12px;
-                        color: #000000;
-                        background-color: #969696;
-                        cursor: pointer;
-                    }
+                button{
+                    border: none;
+                    outline: none;
+                    border-radius: 10px;
+                    padding: 8px 12px;
+                    color: #000000;
+                    background-color: #82ccdd;
+                    cursor: pointer;
+                    transition: 150ms;
+                }
+
+                button:hover{
+                    background: radial-gradient(circle, #82ccdd 0%, rgba(25, 27, 74, 0.5) 170%);
                 }
             }
         }
@@ -656,32 +698,38 @@
 }
 
 .choosesection{
-    background-color: #414141;
+    background: -webkit-linear-gradient(to right,  #1c2d2e,  #22393a,  #1d3132);
+	background: linear-gradient(to right, #2f4f50,  #1f3535,  #2c4546);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
 
     .container{
-        background-color: #383838;
+        background: rgb(254, 249, 249);
         padding: 20px 60px;
         border-radius: 10px;
         display: flex;
         flex-direction: column;
         gap: 30px;
         align-items: center;
-        color: white;
 
         a{
-            background-color: #5b5d8b;
-            padding: 5px;
-            border: 1px solid white;
-            border-radius: 3px;
             text-decoration: none;
+            background: #2f4f50;
             color: white;
+            width: 100%;
+            margin-top: 15px;
+            border-radius: 25px;
+            padding: 10px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            transition: 200ms;
         }
         a:hover{
-            color: #969696;
+            background: radial-gradient(circle, rgba(47,79,80,1) 0%, rgba(33,52,58,1) 100%);
         }
     }
 }
