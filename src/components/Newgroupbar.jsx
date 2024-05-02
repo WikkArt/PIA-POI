@@ -72,8 +72,9 @@ const Newgroupbar = () => {
                     });
 
                     /* const batch = writeBatch(db);
+                    const Ref = [];
                     usuariosAgregados.forEach( (usu) => {
-                        const Ref = doc(db, "userChats", usu[1].uid);
+                        Ref = doc(db, "userChats", usu[1].uid);
                         batch.update(Ref, {
                             [GroupUid+".userInfo"]:{
                                 uid:GroupUid,

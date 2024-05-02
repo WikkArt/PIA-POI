@@ -17,7 +17,7 @@ const Login = () => {
         //const auth = getAuth();
         try{
             await signInWithEmailAndPassword(auth, email, password);
-            navigate("/");
+            navigate("/ChooseSection");
         }catch(err){
             setErr(true);
         }
