@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import add from "../img/a4.png";
+import add from "../img/AvatarGris.png";
 import { collection, getDocs, setDoc, doc/* , serverTimestamp */, Timestamp/* , writeBatch */ } from "firebase/firestore";
 import { AuthContext } from "../context/AuthContext";
 import { db, storage } from "../firebase";
