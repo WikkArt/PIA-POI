@@ -26,15 +26,14 @@ const Login = () => {
     return (
         <div className="formContainer">
             <div className="formWrapper">
-                <span className="logo">Super Chat</span>
-                <span className="title">Login</span>
+                <span className="logo">Inicio de sesión</span>
                 <form onSubmit={handleSubmit}>
                     <input type="email" placeholder="Correo"/>
                     <input type="password" placeholder="Contraseña"/>
-                    <button>Entrar</button>
+                    <button>Iniciar</button>
                     {err && <span>Paso algo malo...</span>}
                 </form>
-                <p>No tienes Cuenta? <Link to="/register">Registrate</Link></p>
+                <p>¿No tienes una cuenta? Regístrate <Link to="/register">aquí</Link></p>
             </div>
         </div>
     );

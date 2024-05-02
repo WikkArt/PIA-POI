@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import add from "../img/a4.png";
+import add from "../img/AvatarGris.png";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth, db, storage } from "../firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
@@ -59,21 +59,20 @@ const Register = () => {
     return (
         <div className="formContainer">
             <div className="formWrapper">
-                <span className="logo">Super Chat</span>
-                <span className="title">Register</span>
+                <span className="logo">Registro</span>
                 <form onSubmit={handleSubmit}>
-                    <input type="text" placeholder="Nombre"/>
-                    <input type="email" placeholder="Correo"/>
-                    <input type="password" placeholder="Contraseña"/>
-                    <input style={{display: "none"}} type="file" id="File"/>
                     <label htmlFor="File">  
                         <img src={add} alt="" />
                         <span>Agregar foto</span>
                     </label>
+                    <input type="text" placeholder="Nombre"/>
+                    <input type="email" placeholder="Correo"/>
+                    <input type="password" placeholder="Contraseña"/>
+                    <input style={{display: "none"}} type="file" id="File"/>
                     <button>Registrarse</button>
                     {err && <span>Paso algo malo...</span>}
                 </form>
-                <p>Ya tienes Cuenta? <Link to="/login">Ingresar</Link></p>
+                <p>¿Ya tienes una cuenta? Inicia sesión <Link to="/login">aquí</Link></p>
             </div>
         </div>
     )
