@@ -14,6 +14,17 @@ const Chats = () => {
     const {dispatch} = useContext(ChatContext);
 
     useEffect(() => {
+        // const usersRef = collection(db, "users");
+        // const q = query(usersRef, where("uid", "not-in", [auth.currentUser.uid]));
+        // const unsub = onSnapshot(q, (querySnapshot) => {
+        //     let chats = [];
+        //     querySnapshot.forEach((doc) => {
+        //         chats.push(doc.data());
+        //     });
+        //     setChats(chats);
+        // });
+        // return () => unsub();
+
         const getChats = () => {
             const unsub = onSnapshot(doc(db, "userChats", currentUser.uid), (doc) => {
                 setChats(doc.data())
@@ -26,7 +37,8 @@ const Chats = () => {
         currentUser.uid && getChats()
     }, [currentUser.uid]);
 
-    //console.log(Object.entries(chats));
+    console.log(Object.entries(chats));
+    //console.log(chats);
     
     const handleSelect = (u) => {
         dispatch({type:"CHANGE_USER", payload: u });
@@ -41,6 +53,7 @@ const Chats = () => {
                         <span>{chat[1].userInfo.displayName}</span>
                         <p>{chat[1].lastMessage?.text}</p>
                     </div>
+                    <div className={`user_status ${chat[1].userInfo.isOnline? "online" : "offline"}`}></div>
                 </div>
             ))}
         </div>

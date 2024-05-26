@@ -62,6 +62,7 @@ const Search = () => {
                         uid:user.uid,
                         displayName: user.displayName,
                         photoURL: user.photoURL,
+                        isOnline: user.isOnline,
                     },
                     [combineId+".date"]: serverTimestamp()
                 });
@@ -71,6 +72,7 @@ const Search = () => {
                         uid:currentUser.uid,
                         displayName: currentUser.displayName,
                         photoURL: currentUser.photoURL,
+                        isOnline: currentUser.isOnline,
                     },
                     [combineId+".date"]: serverTimestamp()
                 });
@@ -97,6 +99,7 @@ const Search = () => {
                 <div className="userChatInfo">
                     <span>{user.displayName}</span>
                 </div>
+                <div className={`user_status ${user.isOnline? "online" : "offline"}`}></div>
             </div>)}
         </div>
     )

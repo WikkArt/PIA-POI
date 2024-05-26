@@ -1,7 +1,8 @@
 import React, {useState} from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebase";
+import { auth, db } from "../firebase";
+import { updateDoc, doc } from "firebase/firestore";
 //import add from "../img/a4.png";
 
 const Login = () => {
@@ -13,10 +14,14 @@ const Login = () => {
         e.preventDefault();
         const email = e.target[0].value;
         const password = e.target[1].value;
+        
 
         //const auth = getAuth();
-        try{
-            await signInWithEmailAndPassword(auth, email, password);
+        try {
+            const res = await signInWithEmailAndPassword(auth, email, password);
+            await updateDoc(doc(db, "users", res.user.uid), {
+                isOnline: true,
+            });
             navigate("/ChooseSection");
         }catch(err){
             setErr(true);

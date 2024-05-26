@@ -110,7 +110,7 @@ const Newgroupbar = () => {
                 </label>
                 <div className="userslist">
                     {listaUsuarios?.map((usuario) => (
-                        <div class="userChat" key={usuario[0]}>
+                        <div className="userChat" key={usuario[0]}>
                         <img src={usuario[1].photoURL} alt="" />
                         <div className="userChatInfo">
                             <span>{usuario[1].displayName}</span>

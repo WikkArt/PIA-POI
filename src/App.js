@@ -15,7 +15,7 @@ import ChooseSection from "./pages/ChooseSection";
 import "./style.scss";
 import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom"
 import { useContext } from "react";
-import { AuthContext } from "./context/AuthContext";
+import { AuthContext, AuthContextProvider } from "./context/AuthContext";
 
 // Initialize WebRTC
 const servers = {
@@ -47,32 +47,34 @@ function App() {
   
   return (
     
-    <BrowserRouter>
-      <div className="app">
-      {currentPage === "inicioLlamada" ? (
-        <Menu
-          joinCode={joinCode}
-          setJoinCode={setJoinCode}
-          setPage={setCurrentPage}
-        />
-      ) : (
-          <Videos
-            mode={currentPage}
-            callId={joinCode}
-            setPage={setCurrentPage}
-          />
-      )}
-    </div>
-      <Routes>
-          <Route path="/">
-            <Route index element={<ProtectedRoute><Home /></ProtectedRoute>} />
-            <Route path="choosesection" element={<ProtectedRoute><ChooseSection/></ProtectedRoute>}/>
-            <Route path="chatgroup" element={<ProtectedRoute><ChatGroup/></ProtectedRoute>}/>
-            <Route path="login" element={<Login />} />
-            <Route path="register" element={<Register />} />
-          </Route>
-      </Routes>
-    </BrowserRouter>
+    <AuthContextProvider>
+      <BrowserRouter>
+        <div className="app">
+          {currentPage === "inicioLlamada" ? (
+            <Menu
+              joinCode={joinCode}
+              setJoinCode={setJoinCode}
+              setPage={setCurrentPage}
+            />
+          ) : (
+              <Videos
+                mode={currentPage}
+                callId={joinCode}
+                setPage={setCurrentPage}
+              />
+          )}
+        </div>
+        <Routes>
+            <Route path="/">
+              <Route index element={<ProtectedRoute><Home /></ProtectedRoute>} />
+              <Route path="choosesection" element={<ProtectedRoute><ChooseSection/></ProtectedRoute>}/>
+              <Route path="chatgroup" element={<ProtectedRoute><ChatGroup/></ProtectedRoute>}/>
+              <Route path="login" element={<Login />} />
+              <Route path="register" element={<Register />} />
+            </Route>
+        </Routes>
+      </BrowserRouter>
+    </AuthContextProvider>
   );
 }
 
