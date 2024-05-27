@@ -5,18 +5,22 @@ import More from "../img/more1.png";
 import Messages from "./Messages";
 import Input from "./Input";
 import { ChatContext } from "../context/ChatContext";
+import { useNavigate } from "react-router-dom";
 
 const Chat = () => {
 
-    
     const { data } = useContext(ChatContext);
+
+    const navigate = useNavigate();
+
+    const handleClick= async () => { navigate("/VideoCall"); };
 
     return (
         <div className="chat">
             <div className="chatInfo">
                 <span>{data.user?.displayName}</span>
                 <div className="chatIcons">
-                    <img src={Cam} alt="" />
+                    <img src={Cam} alt="" onClick={handleClick} />
                     <img src={Add} alt="" />
                     <img src={More} alt="" />
                 </div>
