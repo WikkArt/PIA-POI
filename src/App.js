@@ -267,9 +267,9 @@ function Videos({ mode, callId, setPage}) {
         </div>
       </div>
       
-      (!webcamActive && (
-        <div className="modalContainer">
-          <div className="modal">
+       {!webcamActive && (
+                <div className="modalContainer">
+                    <div className="modal">
             <h3>
               Prende tu cámara y micrófono y comienza la llamada
             </h3>
@@ -284,7 +284,7 @@ function Videos({ mode, callId, setPage}) {
             </div>
           </div>
         </div>
-      ))
+      )}
     </div>
   )
 }
