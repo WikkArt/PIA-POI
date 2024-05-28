@@ -7,6 +7,8 @@ import { arrayUnion, doc, serverTimestamp, Timestamp, updateDoc } from "firebase
 import { db, storage } from "../firebase";
 import { v4 as uuid } from "uuid";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
+import { obtenerUbicacion } from "../location/location";
+import Location from "../img/location.png";
 
 const Input = () => {
     const [ text, setText ] = useState("");
@@ -116,6 +118,11 @@ const Input = () => {
                     <input accept="file/*" type="file" style={{display:"none"}} id="file" onChange={e=>setFileI(e.target.files[0])}/>
                     <label htmlFor="file">
                         <img src={Attach} alt="" />
+                    </label>
+                </div>
+                <div className="send2">
+                    <label onClick={obtenerUbicacion}>
+                        <img src={Location} alt="" />
                     </label>
                 </div>
             </div>
